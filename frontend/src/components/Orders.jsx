@@ -1,11 +1,14 @@
+import { Button, useModal } from "@apideck/components";
+
 import Table from "./Table";
 
 import { columns } from "../constants/columns";
 import useOrders from "../hooks/useOrders";
-import OrderModal from "./OrderModal";
+import OrderField from "./OrderField";
 
 export default function Orders() {
   const { orders, isLoading } = useOrders();
+  const { addModal } = useModal();
 
   const hasOrders = orders?.length;
 
@@ -13,21 +16,19 @@ export default function Orders() {
     <div className="flex flex-col">
       <div className="overflow-x-auto">
         <div className="mb-4 sm:flex sm:justify-end">
-          <button className="bg-blue-100 font-semibold p-2 rounded-md">
-            Create
-          </button>
+          <Button
+            text="Create Orders"
+            onClick={() =>
+              addModal(<OrderField />, { style: { maxWidth: 480 } })
+            }
+          />
         </div>
         <Table columns={columns} data={orders} />
         <div className="flex flex-row-reverse py-4 border-gray-200">
-          <button className="bg-blue-100 font-semibold p-2 rounded-md">
-            Prev
-          </button>
-          <button className="bg-blue-100 font-semibold p-2 rounded-md mx-4">
-            Next
-          </button>
+          <Button text="Next" className="ml-2" />
+          <Button text="Previous" />
         </div>
       </div>
-      <OrderModal show />
     </div>
   );
 }

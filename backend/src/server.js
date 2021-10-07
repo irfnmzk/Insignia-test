@@ -17,13 +17,15 @@ app.get("/order", async (req, res) => {
 });
 
 app.post("/order", async (req, res) => {
-  const { customerEmail, paid, filled, total } = req.body;
+  const { customerEmail, fulfillmentStatus, paymentStatus, total } = req.body;
+
+  console.log(req.body);
 
   const result = await prisma.order.create({
     data: {
-      customerEmail,
-      paid,
-      filled,
+      customerEmail: customerEmail,
+      paid: paymentStatus,
+      filled: fulfillmentStatus,
       total,
     },
   });
