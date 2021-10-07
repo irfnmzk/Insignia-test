@@ -1,6 +1,11 @@
 import Table from "./Table";
 
+import { columns } from "../constants/columns";
+import useOrders from "../hooks/useOrders";
+
 export default function Orders() {
+  const { orders } = useOrders();
+
   return (
     <div className="flex flex-col">
       <div className="overflow-x-auto">
@@ -9,7 +14,7 @@ export default function Orders() {
             Create
           </button>
         </div>
-        <Table column={["id"]} data={[]} />
+        <Table columns={columns} data={orders} />
         <div className="flex flex-row-reverse py-4 border-gray-200">
           <button className="bg-blue-100 font-semibold p-2 rounded-md">
             Prev

@@ -3,7 +3,7 @@ import React from "react";
 function NavItem({ href, text }) {
   return (
     <a
-      className={`${"text-blue-700 bg-gray-200"} px-3 py-2 mr-4 text-sm font-semibold text-gray-900 rounded-md hover:text-blue-700 hover:bg-cool-gray-100 focus:outline-none focus:text-blue-700 focus:bg-cool-gray-100`}
+      className={`cursor-pointer px-3 py-2 mr-4 text-sm font-semibold text-gray-900 rounded-md hover:text-blue-700 hover:bg-gray-100 focus:outline-none focus:text-blue-700 focus:bg-gray-100`}
     >
       {text}
     </a>
@@ -12,7 +12,7 @@ function NavItem({ href, text }) {
 
 export default function Navbar() {
   return (
-    <nav className="bg-white border-b border-cool-gray-200">
+    <nav className="bg-white border-b border-gray-200">
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 px-4 sm:px-0">
           <div className="flex items-center">
