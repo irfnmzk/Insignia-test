@@ -2,11 +2,12 @@ import Table from "./Table";
 
 import { columns } from "../constants/columns";
 import useOrders from "../hooks/useOrders";
+import OrderModal from "./OrderModal";
 
 export default function Orders() {
   const { orders, isLoading } = useOrders();
 
-  console.log(orders);
+  const hasOrders = orders?.length;
 
   return (
     <div className="flex flex-col">
@@ -26,6 +27,7 @@ export default function Orders() {
           </button>
         </div>
       </div>
+      <OrderModal show />
     </div>
   );
 }
