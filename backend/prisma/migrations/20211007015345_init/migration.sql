@@ -1,0 +1,9 @@
+-- CreateTable
+CREATE TABLE "Order" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "customerEmail" TEXT NOT NULL,
+    "paid" BOOLEAN NOT NULL DEFAULT false,
+    "filled" BOOLEAN NOT NULL DEFAULT false,
+    "total" INTEGER NOT NULL
+);
