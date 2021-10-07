@@ -68,6 +68,7 @@ export default function Table({ columns, data }) {
         className="bg-white divide-y divide-gray-200"
       >
         {rows.map((row, i) => {
+          console.log(row);
           prepareRow(row);
 
           return (

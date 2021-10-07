@@ -6,14 +6,9 @@ import useOrders from "../hooks/useOrders";
 
 export default function OrderField() {
   const [isLoading, setIsLoading] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   const { removeModal } = useModal();
-  const { createOrder } = useOrders();
+  const { createOrder, mutate } = useOrders();
 
   const onSubmit = async (data) => {
     setIsLoading(true);
@@ -30,6 +25,7 @@ export default function OrderField() {
 
       if (response) {
         removeModal();
+        mutate();
       }
     } catch (err) {
       console.log(err);

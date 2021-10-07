@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import useSwr from "swr";
 
 export default function useOrders() {
@@ -7,8 +7,12 @@ export default function useOrders() {
     return await response.json();
   };
 
-  const ordersUrl = "http://localhost:5000/order";
-  const { data, error } = useSwr(ordersUrl, fethcer);
+  const [search, setSearch] = useState("");
+
+  const ordersUrl =
+    "http://localhost:5000/order" + (search !== "" ? `?search=${search}` : "");
+  console.log(ordersUrl);
+  const { data, error, mutate } = useSwr(ordersUrl, fethcer);
 
   const createOrder = async (values) => {
     const response = await fetch(ordersUrl, {
@@ -26,6 +30,8 @@ export default function useOrders() {
     orders: data,
     isLoading: !error && !data,
     isError: !!error,
+    setSearch,
     createOrder,
+    mutate,
   };
 }

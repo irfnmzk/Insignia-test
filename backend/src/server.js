@@ -9,9 +9,25 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/order", async (req, res) => {
-  const {} = req.param;
+  const { search } = req.query;
 
-  const orders = await prisma.order.findMany();
+  const or = search
+    ? {
+        OR: [
+          { customerEmail: { contains: search } },
+          { id: { equals: Number(search) || 0 } },
+        ],
+      }
+    : {};
+
+  const orders = await prisma.order.findMany({
+    where: {
+      ...or,
+    },
+    orderBy: {
+      id: "desc",
+    },
+  });
 
   return res.json(orders);
 });
