@@ -35,8 +35,6 @@ app.get("/order", async (req, res) => {
 app.post("/order", async (req, res) => {
   const { customerEmail, fulfillmentStatus, paymentStatus, total } = req.body;
 
-  console.log(req.body);
-
   const result = await prisma.order.create({
     data: {
       customerEmail: customerEmail,
