@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import useSwr from "swr";
 
 export default function useOrders() {
@@ -11,7 +11,6 @@ export default function useOrders() {
 
   const ordersUrl =
     "http://localhost:5000/order" + (search !== "" ? `?search=${search}` : "");
-  console.log(ordersUrl);
   const { data, error, mutate } = useSwr(ordersUrl, fethcer);
 
   const createOrder = async (values) => {
@@ -19,7 +18,6 @@ export default function useOrders() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: JSON.stringify(values),
     });

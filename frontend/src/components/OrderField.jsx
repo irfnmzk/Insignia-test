@@ -29,7 +29,6 @@ export default function OrderField() {
       }
     } catch (err) {
       console.log(err);
-      removeModal();
     } finally {
       removeModal();
     }
