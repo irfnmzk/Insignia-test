@@ -4,7 +4,9 @@ import { columns } from "../constants/columns";
 import useOrders from "../hooks/useOrders";
 
 export default function Orders() {
-  const { orders } = useOrders();
+  const { orders, isLoading } = useOrders();
+
+  console.log(orders);
 
   return (
     <div className="flex flex-col">

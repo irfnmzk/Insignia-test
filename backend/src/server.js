@@ -11,7 +11,9 @@ app.use(cors());
 app.get("/order", async (req, res) => {
   const {} = req.param;
 
-  return res.json({});
+  const orders = await prisma.order.findMany();
+
+  return res.json(orders);
 });
 
 app.post("/order", async (req, res) => {
